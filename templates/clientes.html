@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Clientes {% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h2>{{ cantidad }} clientes {{totfil}} </h2p>
+    <a class="btn btn-primary" style="background-color:#4CAF50" href="/altacliente" role="button">Alta nuevo cliente</a>
+</div>
+
+<div> 
+        <div class="container-fluid">
+            <table class="table table-bordered table-condensed" >
+                <tbody>
+                    <tr class="active"> 
+                        {% for item in  encabezado %}
+                            <th >{{item}}</th>
+                        {% endfor %}
+                    </tr>    
+                    {% for linea in  listacli %}
+                        <tr>                
+                            {% for item in  linea %}
+                            <td >{{item}}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

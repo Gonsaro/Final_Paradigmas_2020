@@ -1,0 +1,20 @@
+{% extends "fpais.html" %}
+
+{% block title %}Filtrado por pais{% endblock %}
+
+{% block page_content %}
+<div>
+   <h3>Seleccione el país deseado</h3>
+</div>
+<div>
+    <ul>
+        {% if opciones == [] %}
+            <p style="color:red">No se encontraron resultados</p>
+        {% else %}
+            {% for item in opciones%}
+                <li><a class="btn btn-success" href="/filt-pais/pais/{{item}}">{{ item  }}</a></li> 
+            {% endfor %}
+        {% endif %}    
+    </ul>
+</div>
+{% endblock %}

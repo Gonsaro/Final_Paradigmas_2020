@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block page_content %}
+<div class="page-header">    
+    <h3>Clientes de Conesa</h3>
+</div>
+<div>
+	<form id="miFormulario" class="form" method="POST" role="form" action="/clientesFiltro">
+		{{ formulario.csrf_token }}
+		{{ formulario.name }}
+	
+<div class="page-header ">
+	<div class="row">
+
+
+		<div class="col-xs-3">
+
+		{{formulario.txtPais.label}}{{formulario.txtPais(class_="form-control")}}</div><div class="col-xs-3" style="margin-top:20px;">{{formulario.btnBuscar(class="btn btn-success pull-right")}}</div>
+
+	</div>
+</div>
+</form>
+{% if paises|length == 0 and validador == 1 %}
+		<div class="panel" style="background-color:#ffc108!important">
+		  <div class="panel-body">
+		    No se encontraron registros con el criterio de búsqueda indicado
+		  </div>
+		</div>
+	{% else %}
+<div>
+	{% for i in paises %}
+	    <a scope="col" class="btn btn-info" style="font-size: 15px;margin-bottom: 10px;" href="clientes/{{i}}">{{i}}</a><br/>
+    {% endfor %}
+</div>
+	{% endif %}
+</div>
+{% endblock %}
